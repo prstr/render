@@ -1,0 +1,23 @@
+{
+  "name": "prostore.render",
+  "version": "0.0.0",
+  "description": "ProStore render middleware",
+  "main": "src/index.js",
+  "dependencies": {
+    "underscore": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prstr/render"
+  },
+  "keywords": [
+    "prostore",
+    "utils"
+  ],
+  "author": "Boris Okunskiy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prstr/render/issues"
+  },
+  "homepage": "https://github.com/prstr/render"
+}
