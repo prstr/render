@@ -38,7 +38,6 @@ module.exports = function() {
             return require('prostore.currency')(value, settings);
           }
         }, res.locals, data);
-        console.log(locals);
         done(null, fn(locals));
       });
     };
