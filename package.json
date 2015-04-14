@@ -4,7 +4,8 @@
   "description": "ProStore render middleware",
   "main": "src/index.js",
   "dependencies": {
-    "underscore": "*"
+    "underscore": "*",
+    "prostore.currency": "*"
   },
   "repository": {
     "type": "git",
