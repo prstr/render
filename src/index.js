@@ -11,11 +11,11 @@ module.exports = function() {
 
   return function(req, res, next) {
     res._render = res.render;
-    res.render = function(file, locals, done) {
+    res.render = function(file, data, done) {
       // data is optional
-      if (typeof locals == 'function') {
-        done = locals;
-        locals = {};
+      if (typeof data == 'function') {
+        done = data;
+        data = {};
       }
       // callback is optional
       done = done || function(err, str) {
@@ -37,7 +37,8 @@ module.exports = function() {
             settings = _.extend({}, res.locals.settings, settings);
             return require('prostore.currency')(value, settings);
           }
-        }, res.locals, locals);
+        }, res.locals, data);
+        console.log(locals);
         done(null, fn(locals));
       });
     };
