@@ -6,6 +6,8 @@ var _ = require('underscore');
  * Middleware для отрисовки страниц ProStore.
  * Заменяет `res.render`, сохраняя оригинальный метод от Express
  * в `res._render`.
+ *
+ * В `res.locals.compiler` должен находиться компилятор шаблонов Nanotemplates.
  */
 module.exports = function() {
 
@@ -23,16 +25,14 @@ module.exports = function() {
         if (err) return next(err);
         res.send(str);
       };
-      // store compiler is used
-      var store = res.locals.store;
-      store.compile(file, function(err, fn) {
+      // delegate to compiler
+      res.locals.compiler.compile(file, function(err, fn) {
         /* istanbul ignore if */
         if (err) return done(err);
         var locals = _.extend({
           JSON: JSON,
           Math: Math,
           Date: Date,
-          settings: store.settings || {},
           price: function(value, settings) {
             settings = _.extend({}, res.locals.settings, settings);
             return require('prostore.currency')(value, settings);
