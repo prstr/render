@@ -38,6 +38,12 @@ module.exports = function() {
             return require('prostore.currency')(value, settings);
           }
         }, res.locals, data);
+        // transform models to client
+        Object.keys(locals).forEach(function(key) {
+          var value = locals[key];
+          if (value.client)
+            locals[key] = value.client;
+        });
         done(null, fn(locals));
       });
     };
