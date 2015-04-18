@@ -41,7 +41,7 @@ module.exports = function() {
         // transform models to client
         Object.keys(locals).forEach(function(key) {
           var value = locals[key];
-          if (value.client)
+          if (value && value.client)
             locals[key] = value.client;
         });
         done(null, fn(locals));
