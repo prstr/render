@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "dependencies": {
     "underscore": "*",
-    "prostore.currency": "*"
+    "prostore.currency": "*",
+    "debug": "*"
   },
   "repository": {
     "type": "git",

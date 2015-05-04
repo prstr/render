@@ -1,6 +1,7 @@
 "use strict";
 
-var _ = require('underscore');
+var _ = require('underscore')
+  , debug = require('debug')('prostore:render');
 
 /**
  * Middleware для отрисовки страниц ProStore.
@@ -44,6 +45,7 @@ module.exports = function() {
         /* istanbul ignore if */
         if (err) return done(err);
         var locals = _.extend({}, data, res.templateData);
+        debug('%s (%s)', file, Object.keys(locals));
         done(null, fn(locals));
       });
     };
