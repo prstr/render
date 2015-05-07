@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _ = require('underscore')
   , debug = require('debug')('prostore:render');
@@ -15,33 +15,33 @@ var _ = require('underscore')
  *
  * В `res.locals.compiler` должен находиться компилятор шаблонов Nanotemplates.
  */
-module.exports = function() {
+module.exports = function () {
 
-  return function(req, res, next) {
+  return function (req, res, next) {
     res.templateData = _.extend({
       JSON: JSON,
       Math: Math,
       Date: Date,
-      price: function(value, settings) {
+      price: function (value, settings) {
         settings = _.extend({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
       }
     }, res.templateData);
     res._render = res.render;
-    res.render = function(file, data, done) {
+    res.render = function (file, data, done) {
       // data is optional
       if (typeof data == 'function') {
         done = data;
         data = {};
       }
       // callback is optional
-      done = done || function(err, str) {
+      done = done || function (err, str) {
         /* istanbul ignore if */
         if (err) return next(err);
         res.send(str);
       };
       // delegate to compiler
-      res.locals.compiler.compile(file, function(err, fn) {
+      res.locals.compiler.compile(file, function (err, fn) {
         /* istanbul ignore if */
         if (err) return done(err);
         var locals = _.extend({}, data, res.templateData);
