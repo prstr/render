@@ -1,7 +1,8 @@
 'use strict';
 
 var _ = require('underscore')
-  , debug = require('debug')('prostore:render');
+  , debug = require('debug')('prostore:render')
+  , qs = require('./qs');
 
 /**
  * Middleware для отрисовки страниц ProStore.
@@ -22,6 +23,8 @@ module.exports = function () {
       JSON: JSON,
       Math: Math,
       Date: Date,
+      _: _,
+      qs: qs(req),
       price: function (value, settings) {
         settings = _.extend({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
