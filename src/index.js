@@ -28,7 +28,8 @@ module.exports = function () {
       price: function (value, settings) {
         settings = _.extend({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
-      }
+      },
+      pluralize: require('prostore.pluralize')
     }, res.templateData);
     res._render = res.render;
     res.render = function (file, data, done) {
