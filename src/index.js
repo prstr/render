@@ -20,6 +20,10 @@ module.exports = function () {
 
   return function (req, res, next) {
     res.templateData = _.extend({
+      JSON: JSON,
+      Math: Math,
+      Date: Date,
+      Object: Object,
       _: _,
       qs: qs(req),
       price: function (value, settings) {
