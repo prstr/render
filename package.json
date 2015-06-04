@@ -6,6 +6,7 @@
   "dependencies": {
     "underscore": "*",
     "prostore.currency": "*",
+    "prostore.pluralize": "*",
     "debug": "*"
   },
   "devDependencies": {
