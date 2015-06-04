@@ -22,6 +22,10 @@ module.exports = exports = function (req) {
       return r;
     },
 
+    create: function (obj) {
+      return querystring.stringify(obj);
+    },
+
     replace: function (obj) {
       var r = this._parse();
       Object.keys(obj).forEach(function (key) {
