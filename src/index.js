@@ -1,8 +1,7 @@
 'use strict';
 
 var assign = require('lodash.assign')
-  , debug = require('debug')('prostore:render')
-  , qs = require('./qs');
+  , debug = require('debug')('prostore:render');
 
 /**
  * Middleware для отрисовки страниц ProStore.
@@ -24,7 +23,6 @@ module.exports = exports = function () {
       Math: Math,
       Date: Date,
       Object: Object,
-      qs: qs(req),
       price: function (value, settings) {
         settings = assign({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
