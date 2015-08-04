@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('underscore')
+var assign = require('lodash.assign')
   , debug = require('debug')('prostore:render')
   , qs = require('./qs');
 
@@ -16,18 +16,17 @@ var _ = require('underscore')
  *
  * В `res.locals.compiler` должен находиться компилятор шаблонов Nanotemplates.
  */
-module.exports = function () {
+module.exports = exports = function () {
 
   return function (req, res, next) {
-    res.templateData = _.extend({
+    res.templateData = assign({
       JSON: JSON,
       Math: Math,
       Date: Date,
       Object: Object,
-      _: _,
       qs: qs(req),
       price: function (value, settings) {
-        settings = _.extend({}, res.locals.settings, settings);
+        settings = assign({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
       },
       pluralize: require('prostore.pluralize')
@@ -49,7 +48,7 @@ module.exports = function () {
       res.locals.compiler.compile(file, function (err, fn) {
         /* istanbul ignore if */
         if (err) return done(err);
-        var locals = _.extend({}, data, res.templateData);
+        var locals = assign({}, data, res.templateData);
         debug('%s (%s)', file, Object.keys(locals));
         done(null, fn(locals));
       });

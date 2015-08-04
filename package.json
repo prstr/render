@@ -4,7 +4,7 @@
   "description": "ProStore render middleware",
   "main": "src/index.js",
   "dependencies": {
-    "underscore": "*",
+    "lodash.assign": "*",
     "prostore.currency": "*",
     "prostore.pluralize": "*",
     "debug": "*"
