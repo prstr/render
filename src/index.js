@@ -19,10 +19,6 @@ module.exports = exports = function () {
 
   return function (req, res, next) {
     res.templateData = assign({
-      JSON: JSON,
-      Math: Math,
-      Date: Date,
-      Object: Object,
       price: function (value, settings) {
         settings = assign({}, res.locals.settings, settings);
         return require('prostore.currency')(value, settings);
