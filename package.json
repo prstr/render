@@ -1,6 +1,6 @@
 {
   "name": "prostore.render",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "ProStore render middleware",
   "main": "src/index.js",
   "dependencies": {
